@@ -1,0 +1,78 @@
+const footerLinks = [
+  {
+    category: "About Us",
+    href: "/about-us",
+    links: [
+      { name: "FAQs", url: "/faqs" },
+      { name: "Contact Us", url: "/contact" },
+      { name: "Terms and Conditions", url: "/terms-and-conditions" },
+      { name: "Privacy Policy", url: "/privacy-policy" },
+      { name: "GoMechanic Partners", url: "/partners" },
+      { name: "Workshop Locator", url: "/location/riyadh" },
+      { name: "Offers", url: "/offers" },
+      { name: "Reviews", url: "/reviews" },
+      { name: "Directory", url: "/directory" },
+    ],
+  },
+  {
+    category: "Our Services",
+    links: [
+      { name: "Scheduled Services", url: "/services/sheduled-services" },
+      { name: "AC Services", url: "/services/ac-services" },
+      { name: "Cleaning & Detailing", url: "/services/cleaning-and-detailing" },
+      { name: "Lights & Fitments", url: "/services/light-and-filtments" },
+      { name: "Denting Painting", url: "/services/denting-painting" },
+      { name: "Insurance Services", url: "/services/insurance-services" },
+      { name: "Custom Repair", url: "/services/custom-repair" },
+      { name: "Batteries", url: "/services/batteries" },
+      { name: "Tyres", url: "/services/tyres" },
+      { name: "Detailing Services", url: "/services/detailing-services" },
+      { name: "Windshields & Glass", url: "/services/wildshield-and-glasses" },
+    ],
+  },
+  {
+    category: "Luxury Brands",
+    links: [
+      { name: "Mercedes", url: "?brand=Mercedes" },
+      { name: "BMW", url: "?brand=BMW" },
+      { name: "Audi", url: "?brand=Audi" },
+      { name: "Volvo", url: "?brand=Volvo" },
+      { name: "Mitsubishi", url: "?brand=Mitsubishi" },
+      { name: "Jaguar", url: "?brand=Jaguar" },
+      { name: "Porsche", url: "?brand=Porsche" },
+      { name: "Rolls Royce", url: "?brand=Rolls%20Royce" },
+      { name: "Ferrari", url: "?brand=Ferrari" },
+      { name: "Land Rover", url: "?brand=Land%20Rover" },
+    ],
+  },
+  {
+    category: "Popular Brands",
+    links: [
+      { name: "Maruti Suzuki", url: "?brand=Maruti%20Suzuki" },
+      { name: "Hyundai", url: "?brand=Hyundai" },
+      { name: "Honda", url: "?brand=Honda" },
+      { name: "Toyota", url: "?brand=Toyota" },
+      { name: "Tata", url: "/services?brand=Tata" },
+      { name: "Mahindra", url: "/services?brand=Mahindra" },
+      { name: "Chevrolet", url: "/services?brand=Chevrolet" },
+      { name: "Fiat", url: "/services?brand=Fiat" },
+      { name: "Renault", url: "/services?brand=Renault" },
+      { name: "Kia", url: "/services?brand=Kia" },
+      { name: "Skoda", url: "/services?brand=Skoda" },
+      { name: "Volkswagen", url: "/services?brand=Volkswagen" },
+    ],
+  },
+  {
+    category: "Popular Areas in Saudi Arabia",
+    links: [
+      { name: "Garage near me in Riyadh", url: "?location=riyadh" },
+      { name: "Garage near me in Jeddah", url: "?location=jeddah" },
+      { name: "Garage near me in Mecca", url: "?location=mecca" },
+      { name: "Garage near me in Medina", url: "?location=medina" },
+      { name: "Garage near me in Al Khoba", url: "?location=khoba" },
+      { name: "Garage near me in Dammam", url: "?location=dammam" },
+    ],
+  },
+];
+
+export default footerLinks;
