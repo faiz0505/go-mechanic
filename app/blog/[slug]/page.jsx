@@ -1,56 +1,39 @@
-import {
-  latestNews,
-  featuredArticle,
-  electricCars,
-  carAccessoriesArticle,
-  latestBikeNews,
-  latestCarNews,
-  goMechanicBasics,
-} from "@/utils/blog";
-import React from "react";
+import { latestNews, featuredArticle, electricCars,carAccessoriesArticle,latestBikeNews,latestCarNews, goMechanicBasics } from '@/utils/blog';
 
-// Metadata
-export async function generateMetadata({ params }) {
-  const allPosts = [
-    ...latestNews,
-    ...featuredArticle,
-    ...electricCars,
-    ...carAccessoriesArticle,
-    ...latestBikeNews,
-    ...latestCarNews,
-    ...goMechanicBasics,
-  ];
-  const post = allPosts.find((p) => p.url === params.slug);
-
-  return {
-    title: post?.title || "Blog Post",
-  };
+// Generate static paths
+export async function generateStaticParams() {
+  const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
+  return allPosts.map((post) => ({
+    slug: post.url,
+  }));
 }
 
-// Page component
-const Page = async ({ params }) => {
-  const slug = params.slug;
-  const allPosts = [
-    ...latestNews,
-    ...featuredArticle,
-    ...electricCars,
-    ...carAccessoriesArticle,
-    ...latestBikeNews,
-    ...latestCarNews,
-    ...goMechanicBasics,
-  ];
-  const post = allPosts.find((p) => p.url === slug);
+// Generate metadata
+export async function generateMetadata({ params }) {
+    if (!params || !params.slug) {
+      return {
+        title: "Blog Post",
+      };
+    }
+  
+    const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
+    const post = allPosts.find((p) => p.url === params.slug);
+  
+    return {
+      title: post?.title || "Blog Post",
+    };
+  }
+
+export default function Page({ params }) {
+  const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
+  const post = allPosts.find((p) => p.url === params.slug);
 
   if (!post) {
-    return (
-      <div className="container text-red-500 text-center py-8">
-        Post not found
-      </div>
-    );
+    return <div className="container text-red-500 text-center py-8">Post not found</div>;
   }
 
   return (
-    <div className="paddings py-8">
+    <main className="paddings py-8">
       <article className="mx-auto">
         <img
           src={post.imageUrl}
@@ -62,12 +45,10 @@ const Page = async ({ params }) => {
           <span>By {post.author}</span>
           <span>{post.date}</span>
         </div>
-        <div>
+        <div className="">
           <p>Blog content for {post.title}</p>
         </div>
       </article>
-    </div>
+    </main>
   );
-};
-
-export default Page;
+}

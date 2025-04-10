@@ -3,14 +3,18 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Banknote,
+  BanknoteIcon,
+  ChevronLeft,
   CreditCard,
   LogIn,
   MapPin,
   Smartphone,
   Wallet,
 } from "lucide-react";
+import { Label } from "@/components/ui/label";
 
 const Page = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
