@@ -1,39 +1,56 @@
-import { latestNews, featuredArticle, electricCars,carAccessoriesArticle,latestBikeNews,latestCarNews, goMechanicBasics } from '@/utils/blog';
+import {
+  latestNews,
+  featuredArticle,
+  electricCars,
+  carAccessoriesArticle,
+  latestBikeNews,
+  latestCarNews,
+  goMechanicBasics,
+} from "@/utils/blog";
+import React from "react";
 
-// Generate static paths
-export async function generateStaticParams() {
-  const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
-  return allPosts.map((post) => ({
-    slug: post.url,
-  }));
-}
-
-// Generate metadata
+// Metadata
 export async function generateMetadata({ params }) {
-    if (!params || !params.slug) {
-      return {
-        title: "Blog Post",
-      };
-    }
-  
-    const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
-    const post = allPosts.find((p) => p.url === params.slug);
-  
-    return {
-      title: post?.title || "Blog Post",
-    };
-  }
-
-export default function Page({ params }) {
-  const allPosts = [...latestNews, ...featuredArticle, ...electricCars, ...carAccessoriesArticle, ...latestBikeNews,...latestCarNews, ...goMechanicBasics];
+  const allPosts = [
+    ...latestNews,
+    ...featuredArticle,
+    ...electricCars,
+    ...carAccessoriesArticle,
+    ...latestBikeNews,
+    ...latestCarNews,
+    ...goMechanicBasics,
+  ];
   const post = allPosts.find((p) => p.url === params.slug);
 
+  return {
+    title: post?.title || "Blog Post",
+  };
+}
+
+// Page component
+const Page = async ({ params }) => {
+  const slug = params.slug;
+  const allPosts = [
+    ...latestNews,
+    ...featuredArticle,
+    ...electricCars,
+    ...carAccessoriesArticle,
+    ...latestBikeNews,
+    ...latestCarNews,
+    ...goMechanicBasics,
+  ];
+  const post = allPosts.find((p) => p.url === slug);
+
   if (!post) {
-    return <div className="container text-red-500 text-center py-8">Post not found</div>;
+    return (
+      <div className="container text-red-500 text-center py-8">
+        Post not found
+      </div>
+    );
   }
 
   return (
-    <main className="paddings py-8">
+    <div className="paddings py-8">
       <article className="mx-auto">
         <img
           src={post.imageUrl}
@@ -45,10 +62,12 @@ export default function Page({ params }) {
           <span>By {post.author}</span>
           <span>{post.date}</span>
         </div>
-        <div className="">
+        <div>
           <p>Blog content for {post.title}</p>
         </div>
       </article>
-    </main>
+    </div>
   );
-}
+};
+
+export default Page;
